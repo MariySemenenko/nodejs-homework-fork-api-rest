@@ -21,7 +21,7 @@ const contactSchema = new Schema(
       default: false,
     },
   },
-  { versionKey: false, timestamps: true }//format date
+  { versionKey: false, timestamps: true }//format date cloused
 );
 
 contactSchema.post("save", handleMongooseError);

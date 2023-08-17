@@ -4,6 +4,8 @@ const cors = require("cors");
 
 require("dotenv").config();
 
+const authRouter = require('./routes/api/auth')
+
 const contactsRouter = require("./routes/api/contacts");
 
 const app = express(); //app web server
@@ -14,6 +16,7 @@ app.use(logger(formatsLogger));//middleware
 app.use(cors());
 app.use(express.json());//checken body
 
+app.use('/users', authRouter)
 app.use("/api/contacts", contactsRouter);
 
 app.use((req, res) => {

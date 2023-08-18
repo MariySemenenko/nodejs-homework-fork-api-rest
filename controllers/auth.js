@@ -1,16 +1,16 @@
 const { User } = require("../models/user");
  const bcrypt = require("bcrypt");
  const jwt = require("jsonwebtoken");
-// const gravatar = require("gravatar");
-// const path = require("path");
-// const fs = require("fs/promises");
-// const Jimp = require("jimp");
+ const gravatar = require("gravatar");
+ const path = require("path");
+ const fs = require("fs/promises");
+ const Jimp = require("jimp");
 
-//const { SECRET_KEY } = process.env;
+const { SECRET_KEY } = process.env;
 
 const { ctrl, HttpError } = require("../helpers");
 
-//const avatarDir = path.join(__dirname, "../", "public", "avatars");
+const avatarDir = path.join(__dirname, "../", "public", "avatars");
 
 
 const register = async (req, res) => {

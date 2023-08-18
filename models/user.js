@@ -36,9 +36,7 @@ const userSchema = new Schema(
 userSchema.post("save", handleMongooseError);
 
 const registerSchema = Joi.object({
-    //////////////////////////////
-    name: Joi.string().required(),
-    /////////////////////////////////
+  
   email: Joi.string().pattern(emailRegexp).required().messages({
     "any.required": "missing required email field",
   }),

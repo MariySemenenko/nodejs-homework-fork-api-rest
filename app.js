@@ -15,6 +15,7 @@ const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 app.use(logger(formatsLogger));//middleware
 app.use(cors());
 app.use(express.json());//checken body
+app.use(express.static("public"))
 
 app.use('/users', authRouter)
 app.use("/api/contacts", contactsRouter);
@@ -24,8 +25,9 @@ app.use((req, res) => {
 });
 
 app.use((err, req, res, next) => {
-  //midleware
-  res.status(500).json({ message: err.message });
+  const { status = 500, message = " Server error" } = err;
+  res.status(status).json({ message });
 });
+
 
 module.exports = app;

@@ -1,7 +1,7 @@
 const { User } = require("../models/user");
  const bcrypt = require("bcrypt");
  const jwt = require("jsonwebtoken");
- const gravatar = require("gravatar");
+ const gravatar = require("gravatar");//for avatar
  const path = require("path");
  const fs = require("fs/promises");
  const Jimp = require("jimp");
@@ -21,6 +21,7 @@ const register = async (req, res) => {
     throw HttpError(409, "Email already in use");//if identical email
   }
   const hassPassword = await bcrypt.hash(password, 10);//cache password
+
   const avatarURL = gravatar.url(email);
 
   const newUser = await User.create({//save password in cached view
@@ -36,6 +37,7 @@ const register = async (req, res) => {
     },
   });
 };
+
 const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
@@ -79,6 +81,7 @@ const logout = async (req, res) => {
     message: "Logout success",
   });
 };
+
 const changeSubscription = async (req, res) => {
   const { subscription } = req.body;
   const { id } = req.user;
@@ -108,6 +111,7 @@ const updateAvatar = async (req, res) => {
   .catch((err) => {
     console.error(err);
   });
+  
   const fileName = `${_id}_${originalname}`
   const resultUpload = path.join(avatarDir, fileName);
   await fs.rename(tempUpload, resultUpload);

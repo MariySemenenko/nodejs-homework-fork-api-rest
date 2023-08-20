@@ -18,7 +18,7 @@ const router = express.Router();//create empty router
 
  router.patch("/", authenticate, validateSubscription(schemas.subscriptionSchema), ctrl.changeSubscription);
 
- router.patch("/avatar", authenticate, upload.single("avatar"), ctrl.updateAvatar)
+ router.patch("/avatar", authenticate, upload.single("avatar"), ctrl.updateAvatar)//http://localhost:3000/users/avatar
 
  router.patch('/id/favorite', authenticate, ctrl.updateAvatar)
 

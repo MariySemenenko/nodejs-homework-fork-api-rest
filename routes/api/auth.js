@@ -8,7 +8,7 @@ const ctrl = require("../../controllers/auth");
 
 const router = express.Router();//create empty router
 
- router.post("/register", validateBody(schemas.registerSchema), ctrl.register);//https://localhost:3000/users/register
+ router.post("/register", validateBody(schemas.registerSchema), ctrl.register);//https://localhost:3000/users/register(email, password)
 
  router.post("/login", validateBody(schemas.loginSchema), ctrl.login);
 

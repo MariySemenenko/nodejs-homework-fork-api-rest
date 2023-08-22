@@ -23,10 +23,5 @@ require("dotenv").config();
  module.exports = sendEmail
 
 
-//  const email = {
-//     from: UKR_NET_EMAIL,
-//     to: "demakoj866@chodyi.com",
-//     subject: "Verify email",
-//     html: "<p>Hello Ihor</p>"
-//  }
-//  transport.sendMail(email).then(() => console.log("Email send success")).catch(error => console.log(error.massage))
+
+

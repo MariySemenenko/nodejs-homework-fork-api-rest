@@ -1,7 +1,7 @@
 const express = require("express");
-const upload = require("../../middlewares/upload")
-const { validateBody} = require("../../middlewares");
-const { authenticate, validateSubscription } = require("../../middlewares");
+//const upload = require("../../middlewares/upload")
+//const { validateBody} = require("../../middlewares");
+const { validateBody, authenticate, validateSubscription, upload } = require("../../middlewares");
 const { schemas } = require("../../models/user");
 const ctrl = require("../../controllers/auth");
 

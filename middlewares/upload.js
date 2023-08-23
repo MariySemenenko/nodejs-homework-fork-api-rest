@@ -1,7 +1,7 @@
 const multer = require("multer"); //for save file img
 const path = require("path");
 
-const tempDir = path.join(__dirname, "../", "temp");
+const tempDir = path.join(__dirname, "../", "tmp");
 
 const multerConfig = multer.diskStorage({
   destination: tempDir,

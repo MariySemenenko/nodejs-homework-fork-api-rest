@@ -5,7 +5,7 @@ const gravatar = require("gravatar"); //for avatar
 const path = require("path");
 const fs = require("fs/promises");
 const Jimp = require("jimp");
-const nanoid = require("nanoid");
+const { nanoid } = require("nanoid");
 
 const { SECRET_KEY,BASE_URL } = process.env;
 

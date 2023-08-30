@@ -13,7 +13,7 @@ describe("register", () => {
   beforeAll(async () => {
     await mongoose.connect(DB_TEST_URI);
 
-    await User.deleteMany();
+    // await User.deleteMany();
   });
 
   afterAll(async () => {
@@ -21,7 +21,7 @@ describe("register", () => {
   });
 
   it("should register new user", async () => {
-    const response = await supertest(app).post("/api/users/register").send({
+    const response = await supertest(app).post("/register").send({
       email: "testUser@gmail.com",
       password: "789456",
     });
@@ -30,12 +30,12 @@ describe("register", () => {
   });
 
   it("should not register the same user two times", async () => {
-    await supertest(app).post("/api/users/register").send({
+    await supertest(app).post("/register").send({
       email: "testUser@gmail.com",
       password: "789456",
     });
 
-    const response = await supertest(app).post("/api/users/register").send({
+    const response = await supertest(app).post("/register").send({
       email: "testUser@gmail.com",
       password: "789456",
     });

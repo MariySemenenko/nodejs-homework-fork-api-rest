@@ -21,9 +21,6 @@ app.use(express.static("public"))//for img
 
 app.use('/users', authRouter)
 
-
-
-
  app.use("/api/contacts", contactsRouter);//http://localhost:3000/api/contacts
 
 app.use((req, res) => {

@@ -7,7 +7,7 @@ const {
   favoriteValidateStatus,
   authenticate,
 } = require("../../middlewares");
-const schemas = require("../../models/contact");
+const {schemas} = require("../../models/contact");
 
 const router = express.Router();
 
@@ -28,7 +28,7 @@ router.put(
 );
 
 router.patch(
-  "/id/favorite",
+  "/:id/favorite",
   authenticate,
   isValidId,
   favoriteValidateStatus,

@@ -1,25 +1,26 @@
 const express = require("express");
-const upload = require("../../middlewares/upload")
-const { validateBody} = require("../../middlewares");
-const { authenticate, validateSubscription } = require("../../middlewares");
+
+const { validateBody, authenticate, validateSubscription, upload } = require("../../middlewares");
 const { schemas } = require("../../models/user");
 const ctrl = require("../../controllers/auth");
 
 
 const router = express.Router();//create empty router
 
- router.post("/register", validateBody(schemas.registerSchema), ctrl.register);//https://localhost:3000/users/register(email, password)
+router.post("/register", validateBody(schemas.registerSchema), ctrl.register);
 
- router.post("/login", validateBody(schemas.loginSchema), ctrl.login);
+router.get("/verify/:verificationToken",ctrl.verify)
 
- router.get("/current", authenticate, ctrl.getCurrent);
+router.post("/verify", validateBody(schemas.userEmailSchema), ctrl.resendVerify)
 
- router.post("/logout", authenticate, ctrl.logout)
+router.post("/login", validateBody(schemas.loginSchema), ctrl.login);
 
- router.patch("/", authenticate, validateSubscription(schemas.subscriptionSchema), ctrl.changeSubscription);
+router.get("/current", authenticate, ctrl.getCurrent);
 
- router.patch("/avatar", authenticate, upload.single("avatar"), ctrl.updateAvatar)//http://localhost:3000/users/avatar
+router.post("/logout", authenticate, ctrl.logout)
 
- router.patch('/id/favorite', authenticate, ctrl.updateAvatar)
+router.patch("/", authenticate, validateSubscription(schemas.subscriptionSchema), ctrl.changeSubscription);
+
+router.patch("/avatar", authenticate, upload.single("avatar"), ctrl.updateAvatar)
 
 module.exports = router;
